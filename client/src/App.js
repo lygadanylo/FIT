@@ -15,7 +15,7 @@ class App extends Component {
     const { user } = this.state;
     axios({
       method: "POST",
-      url: "http://localhost:3012/create",
+      url: "http://localhost:3001/create",
       data: { name: user }
     })
       .then(response => {
@@ -27,7 +27,7 @@ class App extends Component {
   fetchUser = () => {
     axios({
       method: "GET",
-      url: "/user"
+      url: "http://localhost:3001/user"
     })
       .then(response => {
         console.log(response.data);

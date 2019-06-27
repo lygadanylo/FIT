@@ -3,7 +3,7 @@ const express = require("express"),
   cors = require("cors");
 
 const app = express();
-const PORT = 3012;
+const PORT = 3001;
 let user = {};
 
 app.use(bodyParser.urlencoded({ extended: true }));
