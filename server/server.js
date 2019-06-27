@@ -23,7 +23,7 @@ app.post("/create", (req, res) => {
   user = { email, name, lastName, password };
   return res
     .status(200)
-    .json({ success: true, user: user, message: "Account create!" });
+    .json({ success: true, user: user, message: "Account created!" });
 });
 
 app.get("/user", (req, res) => {
