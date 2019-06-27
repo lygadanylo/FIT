@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Register from "./components/Register";
 
 class App extends Component {
   constructor(props) {
@@ -39,7 +40,8 @@ class App extends Component {
     const { fetchUser, user } = this.state;
     console.log(fetchUser);
     return (
-      <section>
+      <section className="App">
+        <Register />
         <div className="app-wrapper">
           <input
             type="text"
