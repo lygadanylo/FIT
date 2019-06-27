@@ -16,8 +16,14 @@ app.get("/", (req, res) => {
 
 app.post("/create", (req, res) => {
   console.log(req.body);
-  user.name = req.body.name;
-  res.send(req.body);
+  const { email, name, lastName, password } = req.body;
+  if (email == "" || name == "" || lastName == "" || password == "") {
+    return res.status(200).json({ success: false, message: "Field is empty" });
+  }
+  user = { email, name, lastName, password };
+  return res
+    .status(200)
+    .json({ success: true, user: user, message: "Account create!" });
 });
 
 app.get("/user", (req, res) => {
