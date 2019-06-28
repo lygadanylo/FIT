@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { create } from "../action/action";
+import { create } from "../../action/action";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 
@@ -52,7 +52,7 @@ class Register extends Component {
     return (
       <section>
         <div className="register-wrapper">
-          <div className="register">
+          <div className="register col-12 col-lg-6">
             <h1>Register</h1>
             <div className="field">
               <h1>Name:</h1>

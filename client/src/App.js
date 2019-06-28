@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Register from "./components/Register";
+import Register from "./components/auth/Register";
 import { connect } from "react-redux";
+import "./style/app.scss";
 
 class App extends Component {
   render() {
