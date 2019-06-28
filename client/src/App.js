@@ -7,7 +7,9 @@ class App extends Component {
   render() {
     return (
       <section className="App">
-        <Register />
+        <div className="app-bgn">
+         <Register />
+        </div>
       </section>
     );
   }

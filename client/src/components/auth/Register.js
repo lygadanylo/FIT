@@ -50,12 +50,11 @@ class Register extends Component {
     console.log(userInfo);
     console.log(message);
     return (
-      <section>
-        <div className="register-wrapper">
-          <div className="register">
-            <h1>Register</h1>
+      <section className="register-wrapper">
+        <div className="register ">
+          <div className="register-fields col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6">
+            <h1>Sing Up</h1>
             <div className="field">
-              <h1>Name:</h1>
               <input
                 value={name}
                 onChange={this.onNameChange}
@@ -65,7 +64,6 @@ class Register extends Component {
               />
             </div>
             <div className="field">
-              <h1>Last Name:</h1>
               <input
                 value={last_name}
                 onChange={this.onLastNameChange}
@@ -75,7 +73,6 @@ class Register extends Component {
               />
             </div>
             <div className="field">
-              <h1>Email:</h1>
               <input
                 value={email}
                 onChange={this.onEmailChange}
@@ -85,7 +82,6 @@ class Register extends Component {
               />
             </div>
             <div className="field">
-              <h1>Password:</h1>
               <input
                 value={password}
                 onChange={this.onPasswordChange}
