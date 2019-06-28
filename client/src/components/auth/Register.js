@@ -52,7 +52,7 @@ class Register extends Component {
     return (
       <section>
         <div className="register-wrapper">
-          <div className="register col-12 col-lg-6">
+          <div className="register">
             <h1>Register</h1>
             <div className="field">
               <h1>Name:</h1>
