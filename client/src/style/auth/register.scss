@@ -39,6 +39,37 @@
                     height: 50px;
                     padding: 10px;
                 }
+                .create-account-button{
+                    border: none;
+                    background-color: #fff;
+                    border-radius: 15px;
+                    padding: 10px 40px;
+                    font-weight: 100;
+                    margin-bottom: 20px;
+                    cursor: pointer;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+            .change-button-login{
+                position: absolute;
+                bottom: 0;
+                padding: 10px 60px;
+                background-color: #fff;
+                border-top-left-radius: 45px;
+                border-top-right-radius: 45px;
+                color: black;
+                &:hover {
+                    padding-bottom: 20px;
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+                h2{
+                    margin: 0;
+                    line-height: 1.5;
+                    font-weight: 100;
+                }
             }
 
         }

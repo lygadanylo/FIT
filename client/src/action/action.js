@@ -1,6 +1,5 @@
 import axios from "axios";
 export const create = e => dispatch => {
-  console.log(e);
   axios({
     method: "POST",
     url: "http://localhost:3001/create",

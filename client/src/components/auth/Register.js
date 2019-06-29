@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { create } from "../../action/action";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
+import cancel from "../../img/cancel.png";
+import checked from "../../img/checked.png";
 
 class Register extends Component {
   constructor(props) {
@@ -46,9 +48,8 @@ class Register extends Component {
   };
   render() {
     const { name, last_name, email, password } = this.state;
-    const { message, userInfo } = this.props;
-    console.log(userInfo);
-    console.log(message);
+    const { message } = this.props;
+    console.log(message)
     return (
       <section className="register-wrapper">
         <div className="register ">
@@ -91,11 +92,14 @@ class Register extends Component {
               />
             </div>
             <div className="field">
-              <button onClick={this.createUser}>Create Account</button>
+              <button className="create-account-button" onClick={this.createUser}>Create Account</button>
             </div>
-            {message ? <div>{message}</div> : <div>{message}</div>}
+            <div className="change-button-login">
+                <h2>Login</h2>
+            </div>
           </div>
         </div>
+        
       </section>
     );
   }
@@ -103,10 +107,9 @@ class Register extends Component {
 
 const mapStateToProps = state => {
   console.log(state);
-  const { message, userInfo } = state;
+  const { message } = state;
   return {
-    message,
-    userInfo
+    message
   };
 };
 
@@ -116,8 +119,7 @@ const mapDispatchToProps = {
 
 Register.propTypes = {
   create: PropTypes.func,
-  message: PropTypes.string,
-  userInfo: PropTypes.object
+  message: PropTypes.bool
 };
 export default connect(
   mapStateToProps,
