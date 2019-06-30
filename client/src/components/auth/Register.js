@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { create } from "../../action/action";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
-import cancel from "../../img/cancel.png";
 import checked from "../../img/checked.png";
+import cancel from "../../img/cancel.png";
 
 class Register extends Component {
   constructor(props) {
@@ -37,7 +37,6 @@ class Register extends Component {
       email,
       password
     };
-    console.log(user);
     create(user);
     this.setState({
       name: "",
@@ -49,7 +48,7 @@ class Register extends Component {
   render() {
     const { name, last_name, email, password } = this.state;
     const { message } = this.props;
-    console.log(message)
+
     return (
       <section className="register-wrapper">
         <div className="register ">
@@ -99,7 +98,21 @@ class Register extends Component {
             </div>
           </div>
         </div>
-        
+        {message !== undefined ? (<div className="server-status">
+          { message === true ? 
+            ( <div className="status">
+                <img className="error-img" src={checked} />
+                <p>Account created successful!</p>
+              </div>
+            )
+            :
+            ( <div className="status">
+                <img className="error-img" src={cancel}/>
+                <p>Field is empty. Try again</p>
+              </div>
+              ) 
+          }
+        </div>) : (null)}
       </section>
     );
   }
