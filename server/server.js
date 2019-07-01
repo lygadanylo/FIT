@@ -18,12 +18,12 @@ app.get("/", (req, res) => {
 });
 
 app.post("/create", (req, res) => {
-  console.log(req.body);
-  const { email, name, lastName, password } = req.body;
-  if (email == "" || name == "" || lastName == "" || password == "") {
-    return res.status(200).json({ success: false, message: false });
+  const { email, name, last_name, password } = req.body;
+  if (email == "" || name == "" || last_name == "" || password == "") {
+    return res.status(400).json({ success: false, message: false });
   }
-  const Users = new User(email, name, lastName, password);
+  console.log(email, name, last_name, password);
+  const Users = User.create({ email, name, lastName: last_name, password });
   return res.status(200).json({ success: true, user: Users, message: true });
 });
 

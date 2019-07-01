@@ -12,5 +12,5 @@ const User = mongoose.model("User", userSchema);
 
 module.exports = {
   model: User,
-  create: params => new User(params)
+  create: params => new User(params).save()
 };
