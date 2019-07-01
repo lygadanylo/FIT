@@ -9,7 +9,10 @@ export const create = e => dispatch => {
       dispatch(createUser(e));
       dispatch(createStatus(response.data.message));
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      error.response.data;
+      console.log(error);
+    });
 };
 const createStatus = message => ({
   type: "CREATE_STATUS",
