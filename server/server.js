@@ -1,4 +1,5 @@
-import User from "./models/user";
+// import User from "./models/user";
+const User = require("./models/user");
 
 const express = require("express"),
   bodyParser = require("body-parser"),
@@ -6,7 +7,7 @@ const express = require("express"),
 
 const app = express();
 const PORT = 3001;
-let user = {};
+// let user = {};
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -22,13 +23,11 @@ app.post("/create", (req, res) => {
   if (email == "" || name == "" || lastName == "" || password == "") {
     return res.status(200).json({ success: false, message: false });
   }
-  user = { email, name, lastName, password };
-  return res
-    .status(200)
-    .json({ success: true, user: user, message: true });
+  const Users = new User(email, name, lastName, password);
+  return res.status(200).json({ success: true, user: Users, message: true });
 });
 
-app.get("/user", (req, res) => { 
+app.get("/user", (req, res) => {
   res.send(user);
 });
 

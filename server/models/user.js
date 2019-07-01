@@ -1,12 +1,16 @@
-import mongoose from "mongoose";
+const mongoose = require("../mongoConfid");
+const Schema = mongoose.Schema;
 
-const userSchema = Schema({
-    name: String,
-    lastName:String,
-    email:String,
-    password:String
+const userSchema = new Schema({
+  name: String,
+  lastName: String,
+  email: String,
+  password: String
 });
 
-const user = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 
-export default user;
+module.exports = {
+  model: User,
+  create: params => new User(params)
+};
