@@ -36,12 +36,13 @@ app.post("/login", (req, res) => {
       if (error) {
         return res.status(400).json({ success: false, message: false });
       }
-      const { email, name, last_name } = user;
-      return res.status(200).json({
-        success: true,
-        user: { email, name, lastName },
-        message: true
-      });
+      res.redirect("http://localhost:3000/");
+      // const { email, name, last_name } = user;
+      // return res.status(200).json({
+      //   success: true,
+      //   user: { email, name, lastName },
+      //   message: true
+      // });
     }
   ).lean();
 });
