@@ -10,7 +10,10 @@ const userSchema = new Schema({
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = {
-  model: User,
-  create: params => new User(params).save()
-};
+module.exports = User;
+
+// module.exports = {
+//   model: User,
+//   create: params => new User(params).save(),
+//   login: params => User.findOne(params).lean()
+// };

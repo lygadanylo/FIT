@@ -21,17 +21,31 @@ app.post("/create", (req, res) => {
   if (email == "" || name == "" || last_name == "" || password == "") {
     return res.status(400).json({ success: false, message: false });
   }
-  const Users = User.create({ email, name, lastName: last_name, password });
+  const Users = new User({ email, name, lastName: last_name, password });
   return res.status(200).json({ success: true, user: Users, message: true });
 });
 
 app.post("/login", (req, res) => {
-  const { email, password } = req.body;
-  const user = User.findOne({
-    email: email
-  });
-  return res.status(200).json({ success: true, user: user, message: true });
+  const { email } = req.body;
+  console.log(email);
+  User.findOne(
+    {
+      email: email
+    },
+    (error, user) => {
+      if (error) {
+        return res.status(400).json({ success: false, message: false });
+      }
+      const { email, name, last_name } = user;
+      return res.status(200).json({
+        success: true,
+        user: { email, name, lastName },
+        message: true
+      });
+    }
+  ).lean();
 });
+
 app.get("/user", (req, res) => {
   res.send(user);
 });
