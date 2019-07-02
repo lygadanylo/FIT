@@ -1,12 +1,39 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
+import { login } from "../../action/action";
 
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      email: "",
+      password: ""
+    };
   }
+  onEmailChange = email => {
+    this.setState({ email: email.target.value });
+  };
+  onPasswordChange = password => {
+    this.setState({ password: password.target.value });
+  };
+  checkUser = () => {
+    const { email, password } = this.state;
+    const { login } = this.props;
+    const user = {
+      email,
+      password
+    };
+    login(user);
+    console.log(user);
+    this.setState({
+      email: "",
+      password: ""
+    });
+  };
   render() {
+    const { email, password } = this.state;
     return (
       <section className="auth-wrapper">
         <div className="auth">
@@ -14,22 +41,7 @@ class Login extends Component {
             <h1>Sing In</h1>
             <div className="field">
               <input
-                onChange={this.onNameChange}
-                type="text"
-                className="input-field"
-                placeholder="Name"
-              />
-            </div>
-            <div className="field">
-              <input
-                onChange={this.onLastNameChange}
-                type="text"
-                className="input-field"
-                placeholder="Last Name"
-              />
-            </div>
-            <div className="field">
-              <input
+                value={email}
                 onChange={this.onEmailChange}
                 type="text"
                 className="input-field"
@@ -38,6 +50,7 @@ class Login extends Component {
             </div>
             <div className="field">
               <input
+                value={password}
                 onChange={this.onPasswordChange}
                 type="text"
                 className="input-field"
@@ -45,12 +58,14 @@ class Login extends Component {
               />
             </div>
             <div className="field">
-              <button className="create-auth-button" onClick={this.createUser}>
+              <button className="create-auth-button" onClick={this.checkUser}>
                 Sing In
               </button>
             </div>
             <div className="change-button-login">
-              <h2>Register</h2>
+              <Link to="/register">
+                <h2>Register</h2>
+              </Link>
             </div>
           </div>
         </div>
@@ -59,4 +74,12 @@ class Login extends Component {
   }
 }
 
-export default connect()(Login);
+const mapStateToProps = state => {};
+const mapDispatchToProps = {
+  login
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

@@ -20,6 +20,8 @@
       h1 {
         font-size: 28px;
         line-height: 1.5;
+        min-width: 100%;
+        text-align: center;
       }
       .field {
         width: 100%;
@@ -40,6 +42,7 @@
           padding: 10px;
         }
         .create-auth-button {
+          min-width: 40%;
           border: none;
           background-color: #fff;
           border-radius: 15px;
@@ -59,7 +62,11 @@
         background-color: #fff;
         border-top-left-radius: 45px;
         border-top-right-radius: 45px;
-        color: black;
+        text-align: center;
+        a {
+          text-decoration: none;
+          color: black;
+        }
         &:hover {
           padding-bottom: 20px;
           cursor: pointer;

@@ -25,6 +25,13 @@ app.post("/create", (req, res) => {
   return res.status(200).json({ success: true, user: Users, message: true });
 });
 
+app.post("/login", (req, res) => {
+  const { email, password } = req.body;
+  const user = User.findOne({
+    email: email
+  });
+  return res.status(200).json({ success: true, user: user, message: true });
+});
 app.get("/user", (req, res) => {
   res.send(user);
 });

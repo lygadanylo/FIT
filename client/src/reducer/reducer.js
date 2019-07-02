@@ -6,6 +6,8 @@ export default (state = {}, action) => {
       return { ...state, userInfo: payload };
     case "CREATE_STATUS":
       return { ...state, message: payload };
+    case "LOGIN_USER":
+      return { ...state, verificationMessage: payload };
     default:
       return state;
   }

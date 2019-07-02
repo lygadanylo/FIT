@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import checked from "../../img/checked.png";
 import cancel from "../../img/cancel.png";
+import { Link } from "react-router-dom";
 
 class Register extends Component {
   constructor(props) {
@@ -96,7 +97,9 @@ class Register extends Component {
               </button>
             </div>
             <div className="change-button-login">
-              <h2>Login</h2>
+              <Link to="/login">
+                <h2>Login</h2>
+              </Link>
             </div>
           </div>
         </div>
