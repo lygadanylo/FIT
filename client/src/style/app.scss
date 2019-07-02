@@ -1,10 +1,10 @@
 @import "~bootstrap-4-grid/css/grid.css";
-@import "./auth/register.scss";
+@import "./auth/auth.scss";
 @import "./server-status.scss";
 
-body{
-    padding: 0;
-    margin: 0;
+body {
+  padding: 0;
+  margin: 0;
 }
 
 .col,
@@ -77,12 +77,12 @@ body{
 .col-xl-8,
 .col-xl-9,
 .col-xl-auto {
-    padding: 0px 0px;
+  padding: 0px 0px;
 }
-.app-bgn{
-    background-image: url("../img/Sport.jpg");
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+.app-bgn {
+  background-image: url("../img/Sport.jpg");
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

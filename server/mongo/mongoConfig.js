@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const configUrl = "mongodb://localhost:27017/gamedb";
+const configUrl = "mongodb://localhost:27017/FIT";
 mongoose.Promise = Promise;
 
 mongoose.connection.openUri(

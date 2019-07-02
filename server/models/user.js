@@ -1,4 +1,4 @@
-const mongoose = require("../mongoConfid");
+const mongoose = require("../mongo/mongoConfig");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({

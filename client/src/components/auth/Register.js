@@ -50,9 +50,9 @@ class Register extends Component {
     const { message } = this.props;
 
     return (
-      <section className="register-wrapper">
-        <div className="register ">
-          <div className="register-fields col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6">
+      <section className="auth-wrapper">
+        <div className="auth ">
+          <div className="auth-fields col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6">
             <h1>Sing Up</h1>
             <div className="field">
               <input
@@ -91,28 +91,30 @@ class Register extends Component {
               />
             </div>
             <div className="field">
-              <button className="create-account-button" onClick={this.createUser}>Create Account</button>
+              <button className="create-auth-button" onClick={this.createUser}>
+                Create Account
+              </button>
             </div>
             <div className="change-button-login">
-                <h2>Login</h2>
+              <h2>Login</h2>
             </div>
           </div>
         </div>
-        {message !== undefined ? (<div className="server-status">
-          { message === true ? 
-            ( <div className="status">
+        {message !== undefined ? (
+          <div className="server-status">
+            {message === true ? (
+              <div className="status">
                 <img className="error-img" src={checked} />
                 <p>Account created successful!</p>
               </div>
-            )
-            :
-            ( <div className="status">
-                <img className="error-img" src={cancel}/>
+            ) : (
+              <div className="status">
+                <img className="error-img" src={cancel} />
                 <p>Field is empty. Try again</p>
               </div>
-              ) 
-          }
-        </div>) : (null)}
+            )}
+          </div>
+        ) : null}
       </section>
     );
   }

@@ -7,7 +7,6 @@ const express = require("express"),
 
 const app = express();
 const PORT = 3001;
-// let user = {};
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -22,7 +21,6 @@ app.post("/create", (req, res) => {
   if (email == "" || name == "" || last_name == "" || password == "") {
     return res.status(400).json({ success: false, message: false });
   }
-  console.log(email, name, last_name, password);
   const Users = User.create({ email, name, lastName: last_name, password });
   return res.status(200).json({ success: true, user: Users, message: true });
 });
