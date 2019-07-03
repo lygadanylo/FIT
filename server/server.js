@@ -1,10 +1,12 @@
+// import User from "./models/user";
+const User = require("./models/user");
+
 const express = require("express"),
   bodyParser = require("body-parser"),
   cors = require("cors");
 
 const app = express();
 const PORT = 3001;
-let user = {};
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -15,9 +17,34 @@ app.get("/", (req, res) => {
 });
 
 app.post("/create", (req, res) => {
-  console.log(req.body);
-  user.name = req.body.name;
-  res.send(req.body);
+  const { email, name, last_name, password } = req.body;
+  if (email == "" || name == "" || last_name == "" || password == "") {
+    return res.status(400).json({ success: false, message: false });
+  }
+  const Users = new User({ email, name, lastName: last_name, password });
+  return res.status(200).json({ success: true, user: Users, message: true });
+});
+
+app.post("/login", (req, res) => {
+  const { email } = req.body;
+  console.log(email);
+  User.findOne(
+    {
+      email: email
+    },
+    (error, user) => {
+      if (error) {
+        return res.status(400).json({ success: false, message: false });
+      }
+      res.redirect("http://localhost:3000/");
+      // const { email, name, last_name } = user;
+      // return res.status(200).json({
+      //   success: true,
+      //   user: { email, name, lastName },
+      //   message: true
+      // });
+    }
+  ).lean();
 });
 
 app.get("/user", (req, res) => {

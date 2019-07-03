@@ -1,61 +1,33 @@
 import React, { Component } from "react";
-import axios from "axios";
-import Register from "./components/Register";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
+import { connect } from "react-redux";
+import "./style/app.scss";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { LOGIN_PAGE, REGISTER_PAGE } from "./common/common";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { user: "", fetchUser: "" };
-  }
-
-  handelField = value => {
-    this.setState({ user: value.target.value });
-  };
-
-  saveField = () => {
-    const { user } = this.state;
-    axios({
-      method: "POST",
-      url: "http://localhost:3001/create",
-      data: { name: user }
-    })
-      .then(response => {
-        this.setState({ user: " " });
-      })
-      .catch(error => console.log(error));
-  };
-
-  fetchUser = () => {
-    axios({
-      method: "GET",
-      url: "http://localhost:3001/user"
-    })
-      .then(response => {
-        console.log(response.data);
-        this.setState({ fetchUser: response.data });
-      })
-      .catch(error => console.log(error));
-  };
   render() {
-    const { fetchUser, user } = this.state;
-    console.log(fetchUser);
     return (
-      <section className="App">
-        <Register />
-        <div className="app-wrapper">
-          <input
-            type="text"
-            value={user}
-            onChange={this.handelField}
-            placeholder="Name"
-          />
-          <button onClick={this.saveField}>Save</button>
-          <button onClick={this.fetchUser}>Show</button>
-          {fetchUser ? <div>{fetchUser.name}</div> : <div>Empty</div>}
-        </div>
-      </section>
+      <Router basename="/">
+        <section className="App">
+          <div className="app-bgn">
+            <Switch>
+              <Route exact path={REGISTER_PAGE} component={Register} />
+              <Route exact path={LOGIN_PAGE} component={Login} />
+            </Switch>
+          </div>
+        </section>
+      </Router>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {};
+
+const mapDispatchToProps = {};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
