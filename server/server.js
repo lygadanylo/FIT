@@ -23,6 +23,7 @@ app.post("/create", (req, res) => {
   }
   const Users = new User({ email, name, lastName: last_name, password });
   return res.status(200).json({ success: true, user: Users, message: true });
+  // res.redirect("http://localhost:3000/");
 });
 
 app.post("/login", (req, res) => {

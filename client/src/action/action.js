@@ -10,7 +10,7 @@ export const create = e => dispatch => {
       dispatch(createStatus(response.data.message));
     })
     .catch(error => {
-      console.log(error.response.data);
+      // console.log(error.response.data);
       console.log(error);
     });
 };
