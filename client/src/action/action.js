@@ -2,7 +2,7 @@ import axios from "axios";
 export const create = e => dispatch => {
   axios({
     method: "POST",
-    url: "http://localhost:3001/create",
+    url: "/create",
     data: e
   })
     .then(response => {
@@ -17,7 +17,7 @@ export const create = e => dispatch => {
 export const login = value => dispatch => {
   axios({
     method: "POST",
-    url: "http://localhost:3001/login",
+    url: "/login",
     data: value
   })
     .then(response => {
