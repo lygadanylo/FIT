@@ -13,7 +13,9 @@ class Profile extends Component {
         console.log(user);
         return(
             <div>
+                { user? (<div><h1>{user.name}</h1></div>):(<div>Sorry this page is empty</div>)
                 
+                }
             </div>
         );
     }
