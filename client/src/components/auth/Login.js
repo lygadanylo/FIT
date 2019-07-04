@@ -52,7 +52,7 @@ class Login extends Component {
               <input
                 value={password}
                 onChange={this.onPasswordChange}
-                type="text"
+                type="password"
                 className="input-field"
                 placeholder="Password"
               />
@@ -77,6 +77,10 @@ class Login extends Component {
 const mapStateToProps = state => {};
 const mapDispatchToProps = {
   login
+};
+
+Login.propTypes = {
+  login: PropTypes.func
 };
 
 export default connect(
