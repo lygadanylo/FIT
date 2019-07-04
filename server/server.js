@@ -24,15 +24,13 @@ app.post("/create", (req, res) => {
   }
   const token = CryptoJS.enc.Utf8.parse(`${password} ${email}`);
   const passwordHash = CryptoJS.enc.Base64.stringify(token);
-  console.log(passwordHash);
   const Users = new User({
     email,
     name,
     lastName: last_name,
     password: passwordHash
   }).save();
-  res.redirect("http://localhost:3000/");
-  // return res.status(200).json({ success: true, user: Users, message: true });
+  return res.status(200).json({ success: true, message: true });
 });
 
 app.post("/login", (req, res) => {
@@ -43,7 +41,6 @@ app.post("/login", (req, res) => {
     },
     (error, user) => {
       if (error) {
-        console.log("asd");
         return res.status(400).json({ success: false, message: false });
       }
       if (!user) {
@@ -51,11 +48,8 @@ app.post("/login", (req, res) => {
           .status(400)
           .json({ success: false, message: "user not found" });
       }
-      console.log(user);
-      console.log("zxc");
       const decryptedToken = CryptoJS.enc.Base64.parse(user.password);
       const result = decryptedToken.toString(CryptoJS.enc.Utf8);
-
       const params = result.split(" ");
       if (password === params[0]) {
         const { email, name, lastName } = user;
@@ -66,13 +60,6 @@ app.post("/login", (req, res) => {
       return res
         .status(HttpStatus.BAD_REQUEST)
         .json({ message: "password or email is not valid" });
-
-      // const { email, name, last_name } = user;
-      // return res.status(200).json({
-      //   success: true,
-      //   user: { email, name, lastName },
-      //   message: true
-      // });
     }
   ).lean();
 });
