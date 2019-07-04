@@ -5,16 +5,29 @@ import {getUser} from "../../action/action";
 
 class Profile extends Component {
     constructor(props){
-        super(props);
+    super(props);
         this.state={};
+    }
+    componentDidMount() {
+        const {user} = this.props;
+        console.log(user);
+        if(!user){
+            const {getUser} = this.props;
+            getUser();
+        }
     }
     render() {
         const {user} = this.props;
-        console.log(user);
         return(
-            <div>
-                { user? (<div><h1>{user.name}</h1></div>):(<div>Sorry this page is empty</div>)
-                
+            <div className="profile-wrapper">
+                { user ? (
+                    <div className="user-info">
+                        <h1>Name: {user.name}</h1>
+                        <h1>Last Name: {user.lastName}</h1>
+                        <h1>Email: {user.email}</h1>
+                    </div>
+                )
+                :(null)
                 }
             </div>
         );

@@ -37,7 +37,7 @@ export const  getUser = () => dispatch => {
     url: "http://localhost:3001/profile"
   })
   .then(response=>{
-    dispatch(User(response.data.user));
+    dispatch(User(response.data));
   })
   .catch(error=>{
     console.log(error)
