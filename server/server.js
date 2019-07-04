@@ -21,8 +21,9 @@ app.post("/create", (req, res) => {
   if (email == "" || name == "" || last_name == "" || password == "") {
     return res.status(400).json({ success: false, message: false });
   }
-  const Users = new User({ email, name, lastName: last_name, password });
-  return res.status(200).json({ success: true, user: Users, message: true });
+  const Users = new User({ email, name, lastName: last_name, password }).save();
+  res.redirect("http://localhost:3000/");
+  // return res.status(200).json({ success: true, user: Users, message: true });
 });
 
 app.post("/login", (req, res) => {

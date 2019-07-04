@@ -2,7 +2,7 @@ import axios from "axios";
 export const create = e => dispatch => {
   axios({
     method: "POST",
-    url: "/create",
+    url: "http://localhost:3001/create",
     data: e
   })
     .then(response => {
@@ -10,14 +10,14 @@ export const create = e => dispatch => {
       dispatch(createStatus(response.data.message));
     })
     .catch(error => {
-      console.log(error.response.data);
+      // console.log(error.response.data);
       console.log(error);
     });
 };
 export const login = value => dispatch => {
   axios({
     method: "POST",
-    url: "/login",
+    url: "http://localhost:3001/login",
     data: value
   })
     .then(response => {
