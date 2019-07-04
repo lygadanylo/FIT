@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { login } from "../../action/action";
+import isEqual from "lodash/isEqual";
 
 class Login extends Component {
   constructor(props) {
@@ -12,12 +13,24 @@ class Login extends Component {
       password: ""
     };
   }
+
+  componentDidUpdate(prevProps) {
+    const {user} = this.props;
+    if(!isEqual(prevProps.user , user)){
+      const{history} = this.props;
+      history.push("/");
+    }
+    console.log(user);
+  }
+
   onEmailChange = email => {
     this.setState({ email: email.target.value });
   };
+
   onPasswordChange = password => {
     this.setState({ password: password.target.value });
   };
+
   checkUser = () => {
     const { email, password } = this.state;
     const { login } = this.props;
@@ -74,12 +87,18 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => {};
+const mapStateToProps = state => {
+  const{user}= state;
+  return{user};
+
+};
 const mapDispatchToProps = {
   login
 };
 
 Login.propTypes = {
+  history: PropTypes.object,
+  user: PropTypes.object,
   login: PropTypes.func
 };
 

@@ -3,7 +3,7 @@ export default (state = {}, action) => {
   console.log(action);
   switch (action.type) {
     case "CREATE_USER":
-      return { ...state, userInfo: payload };
+      return { ...state, user: payload };
     case "CREATE_STATUS":
       return { ...state, message: payload };
     case "LOGIN_USER":
