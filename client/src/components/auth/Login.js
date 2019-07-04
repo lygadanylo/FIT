@@ -79,6 +79,10 @@ const mapDispatchToProps = {
   login
 };
 
+Login.propTypes = {
+  login: PropTypes.func
+};
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
