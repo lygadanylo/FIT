@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { create } from "../../action/action";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
-import checked from "../../img/checked.png";
-import cancel from "../../img/cancel.png";
 import { Link } from "react-router-dom";
+import isEqual from "lodash/isEqual";
 
 class Register extends Component {
   constructor(props) {
@@ -16,22 +15,34 @@ class Register extends Component {
       password: ""
     };
   }
+
+  componentDidUpdate(prevProps){
+    const{user} = this.props;
+    if(!isEqual(prevProps.user,user)){
+      const{history}=this.props;
+      history.push("/profile")
+    }
+  }
+
   onNameChange = name => {
     this.setState({ name: name.target.value });
   };
+
   onLastNameChange = last_name => {
     this.setState({ last_name: last_name.target.value });
   };
+
   onEmailChange = email => {
     this.setState({ email: email.target.value });
   };
+
   onPasswordChange = password => {
     this.setState({ password: password.target.value });
   };
+
   createUser = () => {
     const { name, last_name, email, password } = this.state;
     const { create } = this.props;
-    console.log(this.props);
     const user = {
       name,
       last_name,
@@ -48,8 +59,6 @@ class Register extends Component {
   };
   render() {
     const { name, last_name, email, password } = this.state;
-    const { message } = this.props;
-
     return (
       <section className="auth-wrapper">
         <div className="auth ">
@@ -103,31 +112,15 @@ class Register extends Component {
             </div>
           </div>
         </div>
-        {message !== undefined ? (
-          <div className="server-status">
-            {message === true ? (
-              <div className="status">
-                <img className="error-img" src={checked} />
-                <p>Account created successful!</p>
-              </div>
-            ) : (
-              <div className="status">
-                <img className="error-img" src={cancel} />
-                <p>Field is empty. Try again</p>
-              </div>
-            )}
-          </div>
-        ) : null}
       </section>
     );
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state);
-  const { message } = state;
+  const {  user } = state;
   return {
-    message
+    user
   };
 };
 
@@ -136,8 +129,8 @@ const mapDispatchToProps = {
 };
 
 Register.propTypes = {
-  create: PropTypes.func,
-  message: PropTypes.bool
+  history: PropTypes.object,
+  create: PropTypes.func
 };
 export default connect(
   mapStateToProps,

@@ -30,7 +30,7 @@ app.post("/create", (req, res) => {
     lastName: last_name,
     password: passwordHash
   }).save();
-  return res.status(200).json({ success: true, message: true });
+  return res.status(200).json({ success: true, user: Users ,message: true });
 });
 
 app.post("/login", (req, res) => {
@@ -64,7 +64,7 @@ app.post("/login", (req, res) => {
   ).lean();
 });
 
-app.get("/user", (req, res) => {
+app.get("/profile", (req, res) => {
   res.send(user);
 });
 

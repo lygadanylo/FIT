@@ -30,3 +30,19 @@ export const login = value => dispatch => {
       console.log(error);
     });
 };
+
+export const  getUser = () => dispatch => {
+  axios({
+    method:"GET",
+    url: "http://localhost:3001/profile"
+  })
+  .then(response=>{
+    dispatch(User(response.data.user));
+  })
+  .catch(error=>{
+    console.log(error)
+  });
+};
+
+
+
