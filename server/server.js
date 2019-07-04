@@ -64,7 +64,7 @@ app.post("/login", (req, res) => {
   ).lean();
 });
 
-app.get("/user", (req, res) => {
+app.get("/profile", (req, res) => {
   res.send(user);
 });
 

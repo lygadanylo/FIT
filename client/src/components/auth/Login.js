@@ -18,7 +18,7 @@ class Login extends Component {
     const {user} = this.props;
     if(!isEqual(prevProps.user , user)){
       const{history} = this.props;
-      history.push("/");
+      history.push("/profile");
     }
     console.log(user);
   }

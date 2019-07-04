@@ -1,3 +1,5 @@
+import { stat } from "fs";
+
 export default (state = {}, action) => {
   const payload = action.payload;
   console.log(action);
@@ -8,9 +10,8 @@ export default (state = {}, action) => {
       return { ...state, message: payload };
     case "LOGIN_USER":
       return { ...state, verificationMessage: payload };
-    case "USER_PROFILE": {
-      return { ...state, user: payload };
-    }
+    case "USER_PROFILE": 
+      return{ ...stat, user: payload }
     default:
       return state;
   }
