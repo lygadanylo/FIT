@@ -86,7 +86,7 @@ class Register extends Component {
               <input
                 value={password}
                 onChange={this.onPasswordChange}
-                type="text"
+                type="password"
                 className="input-field"
                 placeholder="Password"
               />
