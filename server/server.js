@@ -3,7 +3,8 @@ const User = require("./models/user");
 
 const express = require("express"),
   bodyParser = require("body-parser"),
-  cors = require("cors");
+  cors = require("cors"),
+  CryptoJS = require("crypto-js");
 
 const app = express();
 const PORT = 3001;
@@ -21,7 +22,15 @@ app.post("/create", (req, res) => {
   if (email == "" || name == "" || last_name == "" || password == "") {
     return res.status(400).json({ success: false, message: false });
   }
-  const Users = new User({ email, name, lastName: last_name, password }).save();
+  const token = CryptoJS.enc.Utf8.parse(`${(password, email)}`);
+  const passwordHash = CryptoJS.enc.Base64.stringify(token);
+  console.log(passwordHash);
+  const Users = new User({
+    email,
+    name,
+    lastName: last_name,
+    passwordHash
+  }).save();
   res.redirect("http://localhost:3000/");
   // return res.status(200).json({ success: true, user: Users, message: true });
 });

@@ -1,12 +1,12 @@
 import axios from "axios";
-export const create = e => dispatch => {
+export const create = value => dispatch => {
   axios({
     method: "POST",
     url: "http://localhost:3001/create",
-    data: e
+    data: value
   })
     .then(response => {
-      dispatch(createUser(e));
+      dispatch(createUser(value));
       dispatch(createStatus(response.data.message));
     })
     .catch(error => {
