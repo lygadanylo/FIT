@@ -8,6 +8,9 @@ export default (state = {}, action) => {
       return { ...state, message: payload };
     case "LOGIN_USER":
       return { ...state, verificationMessage: payload };
+    case "USER_PROFILE": {
+      return { ...state, user: payload };
+    }
     default:
       return state;
   }

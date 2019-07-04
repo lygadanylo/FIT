@@ -22,6 +22,7 @@ export const login = value => dispatch => {
   })
     .then(response => {
       dispatch(loginUser(value));
+      dispatch(User(response.data.user));
     })
     .catch(error => {
       console.log(error);
@@ -40,4 +41,8 @@ const loginUser = value => ({
 const createUser = value => ({
   type: "CREATE_USER",
   payload: value
+});
+const User = user => ({
+  type: "USER_PROFILE",
+  payload: user
 });
