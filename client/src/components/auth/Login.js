@@ -18,7 +18,7 @@ class Login extends Component {
     const { user } = this.props;
     if (!isEqual(prevProps.user, user)) {
       const { history } = this.props;
-      localStorage.setItem("user", JSON.stringify(user.name));
+      localStorage.setItem("user", JSON.stringify(user.password));
       history.push("/profile");
     }
     console.log(user);
