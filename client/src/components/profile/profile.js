@@ -1,53 +1,56 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
-import {getUser} from "../../action/action";
+import { getUser } from "../../action/action";
 
 class Profile extends Component {
-    constructor(props){
+  constructor(props) {
     super(props);
-        this.state={};
+    this.state = {};
+  }
+  componentDidMount() {
+    const { user } = this.props;
+    const profile = localStorage.getItem("user");
+    console.log(profile);
+    if (!user && profile) {
+      const { getUser } = this.props;
+      getUser();
     }
-    componentDidMount() {
-        const {user} = this.props;
-        console.log(user);
-        if(!user){
-            const {getUser} = this.props;
-            getUser();
-        }
-    }
-    render() {
-        const {user} = this.props;
-        return(
-            <div className="profile-wrapper">
-                { user ? (
-                    <div className="user-info">
-                        <h1>Name: {user.name}</h1>
-                        <h1>Last Name: {user.lastName}</h1>
-                        <h1>Email: {user.email}</h1>
-                    </div>
-                )
-                :(null)
-                }
-            </div>
-        );
-    }
+  }
+
+  render() {
+    const { user } = this.props;
+    return (
+      <div className="profile-wrapper">
+        {user ? (
+          <div className="user-info">
+            <h1>Name: {user.name}</h1>
+            <h1>Last Name: {user.lastName}</h1>
+            <h1>Email: {user.email}</h1>
+          </div>
+        ) : null}
+      </div>
+    );
+  }
 }
 
-const mapStateToProps =state => {
-    const {user} = state;
-    return{
-        user
-    };
-}
+const mapStateToProps = state => {
+  const { user } = state;
+  return {
+    user
+  };
+};
 
 const mapDispatchToProps = {
-    getUser
-}
+  getUser
+};
 
 Profile.protoType = {
-    getUser: PropTypes.func,
-    user: PropTypes.object
-}
+  getUser: PropTypes.func,
+  user: PropTypes.object
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(Profile);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Profile);
