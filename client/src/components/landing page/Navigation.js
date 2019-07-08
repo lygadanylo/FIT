@@ -3,7 +3,8 @@ import React, {Component} from "react";
 class Navigation extends Component {
     render(){
         return(
-            <section id="header-section">
+        <section id="header-section">
+            <div id="shadow">
                 <div className="navigation-wrapper">
                     <div className="left-point">
                         <div className="logo">
@@ -28,12 +29,13 @@ class Navigation extends Component {
                                 </ul>
                             </div>
                             <button className="program-button">
-                                Choose program
+                                Chose program
                             </button>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
         );
     }
 }

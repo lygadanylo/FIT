@@ -8,12 +8,17 @@ class Home extends Component {
   render() {
     return (
       <section id="home-wrapper">
-        <div className="title-wrapper col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
-          <h1>Make you body</h1>
-          <h1>beautiful</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-          </p>
+        <div className="title-wrapper">
+            <div className="title  col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                <h1>Make you body</h1>
+                <h1 className="title-2">beautiful,with our web-app</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
+                </p>
+                <button className="get-button">
+                    Get in touch               
+                </button>
+            </div>
         </div>
       </section>
     );

@@ -1,10 +1,17 @@
 #header-section{
     position: relative;
     background-image: url("../img/Sport.png");
+    background-color: rgba(0,0,0,0.5);
     height: 100vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+#shadow{
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0,0,0,0.4);
 }
 .navigation-wrapper{
     width: 100%;
