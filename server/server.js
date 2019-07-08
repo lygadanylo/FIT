@@ -30,7 +30,7 @@ app.post("/create", (req, res) => {
     lastName: last_name,
     password: passwordHash
   }).save();
-  return res.status(200).json({ success: true, user: Users ,message: true });
+  return res.status(200).json({ success: true, user: Users, message: true });
 });
 
 app.post("/login", (req, res) => {
@@ -52,10 +52,10 @@ app.post("/login", (req, res) => {
       const result = decryptedToken.toString(CryptoJS.enc.Utf8);
       const params = result.split(" ");
       if (password === params[0]) {
-        const { email, name, lastName } = user;
+        const { email, name, lastName, password } = user;
         return res
           .status(HttpStatus.OK)
-          .json({ success: false, user: { email, name, lastName } });
+          .json({ success: false, user: { email, name, lastName, password } });
       }
       return res
         .status(HttpStatus.BAD_REQUEST)

@@ -1,0 +1,41 @@
+#home-wrapper {
+  position: absolute;
+  top: 20%;
+  padding-left: 40px;
+  padding-right: 40px;
+  .title-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    .title{
+      .title-2{
+        color: #fa7c30;
+      }
+      h1,p{
+        margin: 0;
+        line-height: 1.5;
+      }
+      h1{
+        color: #fff;
+        font-size: 65px;
+        text-transform: uppercase;
+      }
+      p{
+        color: #fff;
+        font-size: 20px;
+        padding-top: 15px;
+        padding-bottom: 40px;
+      }
+      .get-button{
+        background-color: #fa7c30;
+        color: #fff;
+        border: none;
+        padding: 15px 45px 15px 45px;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+    }
+  }
+
+}

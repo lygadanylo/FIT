@@ -15,9 +15,10 @@ class Login extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const {user} = this.props;
-    if(!isEqual(prevProps.user , user)){
-      const{history} = this.props;
+    const { user } = this.props;
+    if (!isEqual(prevProps.user, user)) {
+      const { history } = this.props;
+      localStorage.setItem("user", JSON.stringify(user.password));
       history.push("/profile");
     }
     console.log(user);
@@ -88,9 +89,8 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => {
-  const{user}= state;
-  return{user};
-
+  const { user } = state;
+  return { user };
 };
 const mapDispatchToProps = {
   login
