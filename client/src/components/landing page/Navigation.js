@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { LOGIN_PAGE, REGISTER_PAGE } from "../../common/common";
+import { withRouter } from "react-router";
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
 
 class Navigation extends Component {
   render() {
+    const {
+      location: { pathname }
+    } = this.props;
+    let path = pathname.slice(1);
     return (
       <section id="header-section">
         <div id="shadow">
-          <div className="navigation-wrapper">
+          <div className={`navigation-wrapper ${path}-nav`}>
             <div className="left-point">
               <div className="logo">
                 <h1>
@@ -25,7 +32,7 @@ class Navigation extends Component {
               </div>
             </div>
             <div className="right-point">
-              <div className="auth-wrapper">
+              <div className="wrapper">
                 <div className="auth">
                   <ul className="navigation">
                     <li>
@@ -46,4 +53,7 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation;
+Navigation.propTypes = {
+  location: PropTypes.object
+};
+export default withRouter(connect()(Navigation));

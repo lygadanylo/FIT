@@ -1,3 +1,11 @@
+//routing
+.login-nav {
+  display: none !important;
+}
+.register-nav {
+  display: none !important;
+}
+
 #header-section {
   position: relative;
   background-image: url("../img/Sport.png");
@@ -55,7 +63,11 @@
     }
   }
   .right-point {
-    .auth-wrapper {
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
       .auth {
         .navigation {
           margin: 0;
