@@ -23,15 +23,32 @@ app.post("/create", (req, res) => {
   if (email == "" || name == "" || last_name == "" || password == "") {
     return res.status(400).json({ success: false, message: false });
   }
-  const token = CryptoJS.enc.Utf8.parse(`${password} ${email}`);
-  const passwordHash = CryptoJS.enc.Base64.stringify(token);
-  const Users = new User({
-    email,
-    name,
-    lastName: last_name,
-    password: passwordHash
-  }).save();
-  return res.status(200).json({ success: true, user: Users, message: true });
+  User.findOne(
+    {
+      email: email
+    },
+    (error, user) => {
+      console.log(email);
+      if (error) {
+        return res.status(400).json({ success: false, message: false });
+      }
+      console.log(user);
+      if (email === user.email) {
+        return res.status(400).json({ success: false, message: false });
+      }
+      const token = CryptoJS.enc.Utf8.parse(`${password} ${email}`);
+      const passwordHash = CryptoJS.enc.Base64.stringify(token);
+      const Users = new User({
+        email,
+        name,
+        lastName: last_name,
+        password: passwordHash
+      }).save();
+      return res
+        .status(200)
+        .json({ success: true, user: Users, message: true });
+    }
+  );
 });
 
 app.post("/login", (req, res, next) => {
