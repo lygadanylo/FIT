@@ -6,6 +6,10 @@ import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 
 class Navigation extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
     const {
       location: { pathname }
@@ -53,7 +57,12 @@ class Navigation extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  const { userInfo } = state;
+  return { userInfo };
+};
+
 Navigation.propTypes = {
   location: PropTypes.object
 };
-export default withRouter(connect()(Navigation));
+export default withRouter(connect(mapStateToProps)(Navigation));

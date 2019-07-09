@@ -1,4 +1,5 @@
-const User = require("./models/user");
+const User = require("./models/user"),
+  passport = require("passport");
 var HttpStatus = require("http-status-codes");
 
 const express = require("express"),
@@ -33,7 +34,7 @@ app.post("/create", (req, res) => {
   return res.status(200).json({ success: true, user: Users, message: true });
 });
 
-app.post("/login", (req, res) => {
+app.post("/login", (req, res, next) => {
   const { email, password } = req.body;
   User.findOne(
     {
