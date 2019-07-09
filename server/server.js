@@ -1,11 +1,10 @@
-const User = require("./models/user"),
-  passport = require("passport");
-var HttpStatus = require("http-status-codes");
-
-const express = require("express"),
-  bodyParser = require("body-parser"),
-  cors = require("cors"),
-  CryptoJS = require("crypto-js");
+import apiRouts from "./routs/api";
+import HttpStatus from "http-status-codes";
+import express from "express";
+import CryptoJS from "crypto-js";
+import bodyParser from "body-parser";
+import cors from "cors";
+import passport from "passport";
 
 const app = express();
 const PORT = 3001;
@@ -13,6 +12,9 @@ const PORT = 3001;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use("/api",apiRouts);
 
 app.get("/", (req, res) => {
   res.send("Home page");
@@ -51,36 +53,6 @@ app.post("/create", (req, res) => {
   );
 });
 
-app.post("/login", (req, res, next) => {
-  const { email, password } = req.body;
-  User.findOne(
-    {
-      email: email
-    },
-    (error, user) => {
-      if (error) {
-        return res.status(400).json({ success: false, message: false });
-      }
-      if (!user) {
-        return res
-          .status(400)
-          .json({ success: false, message: "user not found" });
-      }
-      const decryptedToken = CryptoJS.enc.Base64.parse(user.password);
-      const result = decryptedToken.toString(CryptoJS.enc.Utf8);
-      const params = result.split(" ");
-      if (password === params[0]) {
-        const { email, name, lastName, password } = user;
-        return res
-          .status(HttpStatus.OK)
-          .json({ success: false, user: { email, name, lastName, password } });
-      }
-      return res
-        .status(HttpStatus.BAD_REQUEST)
-        .json({ message: "password or email is not valid" });
-    }
-  ).lean();
-});
 
 app.get("/profile", (req, res) => {
   res.send(user);
