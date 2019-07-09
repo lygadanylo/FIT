@@ -7,6 +7,8 @@
   .auth {
     display: flex;
     justify-content: center;
+    position: absolute;
+    top: 20%;
     .auth-fields {
       border-radius: 35px;
       padding: 40px;

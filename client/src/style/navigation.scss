@@ -1,85 +1,107 @@
-#header-section{
-    position: relative;
-    background-image: url("../img/Sport.png");
-    background-color: rgba(0,0,0,0.5);
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+//routing
+.login-nav {
+  display: none !important;
 }
-#shadow{
-    position: absolute;
-    height: 100vh;
-    width: 100%;
-    background-color: rgba(0,0,0,0.4);
+.register-nav {
+  display: none !important;
 }
-.navigation-wrapper{
-    width: 100%;
-    padding-top: 20px;
+
+#header-section {
+  position: relative;
+  background-image: url("../img/Sport.png");
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#shadow {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.navigation-wrapper {
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  padding-left: 40px;
+  padding-right: 40px;
+  .left-point {
     display: flex;
-    justify-content: space-between;
-    position: absolute;
-    padding-left: 40px;
-    padding-right: 40px;
-    .left-point{
+    flex-wrap: wrap;
+    .logo {
+      color: #fff;
+      h1 {
+        margin: 0;
+        a {
+          margin: 0;
+          padding: 0;
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+    .nav-button {
+      .navigation {
+        margin: 0;
         display: flex;
         flex-wrap: wrap;
-    .logo{
-        color:#fff;
-        h1{
-            margin: 0;
+        color: #fff;
+        li {
+          text-transform: uppercase;
+          padding-right: 20px;
+          list-style-type: none;
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+          }
         }
+      }
     }
-        .nav-button{
-            .navigation{
-                margin: 0;
-                display: flex;
-                flex-wrap: wrap;
-                color: #fff;
-                li{
-                    text-transform: uppercase;
-                    padding-right: 20px;
-                    list-style-type: none;
-                    &:hover{
-                    text-decoration: underline;   
-                    cursor: pointer;
-                    }
-                }
-            }
-        }
-    }
-    .right-point{
-        .auth-wrapper{
-           .auth{
-                .navigation{
-                    margin: 0;
-                    display: flex;
-                    flex-wrap: wrap;
-                    color: #fff;
-                    li{
-                        text-transform: uppercase;
-                        padding-right: 20px;
-                        list-style-type: none;
-                        &:hover{
-                        text-decoration: underline;   
-                        cursor: pointer;
-                        }
-                    }
-                }
-           } 
-           .program-button{
-            padding: 10px;
-            background: none;
-            color: #fff;
-            border: 2px solid #fff;
+  }
+  .right-point {
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      .auth {
+        .navigation {
+          margin: 0;
+          display: flex;
+          flex-wrap: wrap;
+          color: #fff;
+          li {
             text-transform: uppercase;
-            font-weight: bold;
-                &:hover{
-                    color: #000;
-                    background: #fff;  
-                    cursor: pointer; 
-                }
-           }
+            padding-right: 20px;
+            list-style-type: none;
+            &:hover {
+              text-decoration: underline;
+              cursor: pointer;
+            }
+            a {
+              text-decoration: none;
+              color: white;
+            }
+          }
         }
+      }
+      .program-button {
+        padding: 10px;
+        background: none;
+        color: #fff;
+        border: 2px solid #fff;
+        text-transform: uppercase;
+        font-weight: bold;
+        &:hover {
+          color: #000;
+          background: #fff;
+          cursor: pointer;
+        }
+      }
     }
+  }
 }
