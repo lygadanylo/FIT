@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-
+import React, { Component, Fragment } from "react";
+import Body from "../components/landing page/body";
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -7,6 +7,7 @@ class Home extends Component {
   }
   render() {
     return (
+      <Fragment>
       <section id="home-wrapper">
         <div className="title-wrapper">
           <div className="title  col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -18,10 +19,9 @@ class Home extends Component {
             <button className="get-button">Get in touch</button>
           </div>
         </div>
-        <div className="welcome-wrapper">
-          <div className="welcome col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9" />
-        </div>
       </section>
+      <Body />
+      </Fragment>
     );
   }
 }

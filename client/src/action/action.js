@@ -4,7 +4,7 @@ import { createStatus, loginUser, createUser, User } from "./actionConst.js";
 export const create = value => dispatch => {
   axios({
     method: "POST",
-    url: "http://localhost:3001/create",
+    url: "http://localhost:3001/api/auth/register",
     data: value
   })
     .then(response => {
@@ -19,7 +19,7 @@ export const create = value => dispatch => {
 export const login = value => dispatch => {
   axios({
     method: "POST",
-    url: "http://localhost:3001/login",
+    url: "http://localhost:3001/api/auth/login",
     data: value
   })
     .then(response => {
