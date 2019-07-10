@@ -16,6 +16,7 @@
         color: #fa7c30;
       }
       h1,p{
+        font-family: 'Rubik Mono One', sans-serif;
         margin: 0;
         line-height: 1.5;
       }
@@ -29,14 +30,6 @@
         font-size: 20px;
         padding-top: 15px;
         padding-bottom: 40px;
-      }
-      .get-button{
-        background-color: #fa7c30;
-        color: #fff;
-        border: none;
-        padding: 15px 45px 15px 45px;
-        text-transform: uppercase;
-        cursor: pointer;
       }
     }
   }
