@@ -66,11 +66,10 @@ class Body extends Component {
                 </div>
             </div>
         </section>
-        <section>
+        <section id="trainer">
             <div className="treaner-wrapper">
-                <div className="shadow" />
                 <div className="text-wrapper">
-
+                    asd
                 </div>
             </div>
         </section>
