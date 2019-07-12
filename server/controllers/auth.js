@@ -50,8 +50,8 @@ export const register = (req,res, next) =>{
       if (error) {
         return res.status(400).json({ success: false, message: false });
       }
-      console.log(user);
-      if (email === user.email) {
+      console.log(User);
+      if (email === User.email) {
         return res.status(400).json({ success: false, message: false });
       }
       const token = CryptoJS.enc.Utf8.parse(`${password} ${email}`);
