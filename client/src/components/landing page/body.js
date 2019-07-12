@@ -10,9 +10,9 @@ class Body extends Component {
     return (
       <Fragment>
         <section id="welcome">
-          <div className="welcome-wrapper">
-            <div className="welcome col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-              <div className="img-wrapper col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+          <div className="welcome-wrapper col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+            <div className="welcome ">
+              <div className="img-wrapper">
                 <img src={first} />
               </div>
               <div className="welcome-title">
