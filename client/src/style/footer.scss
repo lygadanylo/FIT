@@ -1,0 +1,70 @@
+#footer {
+  background-color: #151317;
+  h1,
+  p {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    padding-top: 40px;
+  }
+  .footer-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .subscription {
+      padding-bottom: 40px;
+      .header {
+        padding-bottom: 25px;
+        h1 {
+          font-size: 25px;
+        }
+        p {
+          padding-top: 25px;
+          color: #6e6e71;
+          font-size: 18px;
+          line-height: 1.5;
+        }
+      }
+      .follow-field {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding-bottom: 25px;
+        p {
+          font-size: 18px;
+          line-height: 1.5;
+          padding: 0;
+          padding-right: 15px;
+        }
+        a {
+          padding-right: 15px;
+
+          img {
+            width: 35px;
+            padding: 5px;
+            &:hover {
+              border-radius: 100%;
+              background-color: #fa7c30;
+            }
+          }
+        }
+      }
+      .subscription-field {
+        .form {
+          display: flex;
+          flex-wrap: wrap;
+
+          .filed {
+            border: none;
+            width: 50%;
+            padding: 10px;
+          }
+          .get-button {
+            padding-top: 10px;
+            padding-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}

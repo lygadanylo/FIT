@@ -4,6 +4,7 @@
 @import "./home.scss";
 @import "./navigation.scss";
 @import "./body.scss";
+@import "./footer.scss";
 
 body {
   padding: 0;
@@ -83,7 +84,7 @@ body {
   padding: 0px 0px;
 }
 
-.get-button{
+.get-button {
   background-color: #fa7c30;
   color: #fff;
   border: none;

@@ -3,6 +3,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Profile from "./components/profile/profile";
 import Navigation from "./components/landing page/Navigation";
+import Footer from "./components/landing page/footer";
 import Home from "./components/home";
 import { connect } from "react-redux";
 import "./style/app.scss";
@@ -26,6 +27,7 @@ class App extends Component {
             <Route exact path={LOGIN_PAGE} component={Login} />
             <Route exact path={USER_PROFILE} component={Profile} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );
