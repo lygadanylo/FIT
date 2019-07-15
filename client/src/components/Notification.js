@@ -9,8 +9,17 @@ class Notification extends Component {
   }
   render() {
     const { notification } = this.props;
-    console.log(notification ? notification.type : null);
-    return <section id="Notifications" />;
+    return (
+      <section id="Notifications">
+        <div className="notification-wrapper">
+          {notification && notification.type === false ? (
+            <div>
+              <h1>{notification.message}</h1>
+            </div>
+          ) : null}
+        </div>
+      </section>
+    );
   }
 }
 

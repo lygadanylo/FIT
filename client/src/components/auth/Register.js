@@ -59,6 +59,7 @@ class Register extends Component {
   };
   render() {
     const { name, last_name, email, password } = this.state;
+
     return (
       <section className="auth-wrapper">
         <div className="auth ">

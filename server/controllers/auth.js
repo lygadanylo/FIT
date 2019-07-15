@@ -39,21 +39,29 @@ export const login = (req, res, next) => {
 
 export const register = (req, res, next) => {
   const { email, name, last_name, password } = req.body;
+  const validationPassword = "/^[a-zA-Z0-9!@#$%^&*_=+-]{8,12}$/g";
+  const validationEmail =
+    "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/";
   if (email == "" || name == "" || last_name == "" || password == "") {
-    return res.status(400).json({ success: false, message: false });
+    if (email != validationEmail || password != validationPassword) {
+      return res
+        .status(400)
+        .json({ type: false, message: "Email or Password invalid" });
+    }
+    return res.status(400).json({ success: false, message: "Field is empty" });
   }
   User.findOne(
     {
       email: email
     },
     (error, user) => {
+      console.log(email);
+      console.log(user.email);
       if (error) {
         return res
           .status(400)
           .json({ type: false, message: "This email is using now" });
       }
-      console.log(email);
-      console.log(user.email);
       if (email !== user.email) {
         const token = CryptoJS.enc.Utf8.parse(`${password} ${email}`);
         const passwordHash = CryptoJS.enc.Base64.stringify(token);
@@ -69,7 +77,7 @@ export const register = (req, res, next) => {
       }
       return res
         .status(400)
-        .json({ success: false, message: "This email is using now" });
+        .json({ type: false, message: "This email is using now" });
     }
   );
 };
