@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { create } from "../../action/action";
+import { register } from "../../action/action";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
@@ -16,11 +16,11 @@ class Register extends Component {
     };
   }
 
-  componentDidUpdate(prevProps){
-    const{user} = this.props;
-    if(!isEqual(prevProps.user,user)){
-      const{history}=this.props;
-      history.push("/profile")
+  componentDidUpdate(prevProps) {
+    const { user } = this.props;
+    if (!isEqual(prevProps.user, user)) {
+      const { history } = this.props;
+      history.push("/profile");
     }
   }
 
@@ -42,14 +42,14 @@ class Register extends Component {
 
   createUser = () => {
     const { name, last_name, email, password } = this.state;
-    const { create } = this.props;
+    const { register } = this.props;
     const user = {
       name,
       last_name,
       email,
       password
     };
-    create(user);
+    register(user);
     this.setState({
       name: "",
       last_name: "",
@@ -118,19 +118,19 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => {
-  const {  user } = state;
+  const { user } = state;
   return {
     user
   };
 };
 
 const mapDispatchToProps = {
-  create
+  register
 };
 
 Register.propTypes = {
   history: PropTypes.object,
-  create: PropTypes.func
+  register: PropTypes.func
 };
 export default connect(
   mapStateToProps,

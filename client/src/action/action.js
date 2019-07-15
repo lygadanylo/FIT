@@ -1,18 +1,19 @@
 import axios from "axios";
-import { createStatus, loginUser, createUser, User } from "./actionConst.js";
+import { Notifications, loginUser, registerUser, User } from "./actionConst.js";
 
-export const create = value => dispatch => {
+export const register = value => dispatch => {
   axios({
     method: "POST",
     url: "http://localhost:3001/api/auth/register",
     data: value
   })
     .then(response => {
-      dispatch(createUser(value));
-      dispatch(createStatus(response.data.message));
+      dispatch(registerUser(value));
+      dispatch(Notifications(response.data.message));
     })
     .catch(error => {
       console.log(error);
+      dispatch(Notifications(error.response.data));
     });
 };
 
@@ -25,9 +26,11 @@ export const login = value => dispatch => {
     .then(response => {
       dispatch(loginUser(value));
       dispatch(User(response.data.user));
+      dispatch(Notifications(response.data));
     })
     .catch(error => {
       console.log(error);
+      dispatch(Notifications(error.response.data));
     });
 };
 

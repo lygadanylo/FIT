@@ -21,7 +21,6 @@ class Login extends Component {
       localStorage.setItem("user", JSON.stringify(user.password));
       history.push("/profile");
     }
-    console.log(user);
   }
 
   onEmailChange = email => {
@@ -40,7 +39,6 @@ class Login extends Component {
       password
     };
     login(user);
-    console.log(user);
     this.setState({
       email: "",
       password: ""

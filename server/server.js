@@ -14,14 +14,14 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use("/api",apiRouts);
+app.use("/api", apiRouts);
 
 app.get("/", (req, res) => {
   res.send("Home page");
 });
 
 app.get("/profile", (req, res) => {
-  res.send(user);
+  res.send();
 });
 
 console.log("Start on PORT: ", PORT);

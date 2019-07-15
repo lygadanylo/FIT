@@ -11,7 +11,6 @@ class Profile extends Component {
   componentDidMount() {
     const { user } = this.props;
     const profile = localStorage.getItem("user");
-    console.log(profile);
     if (!user && profile) {
       const { getUser } = this.props;
       getUser();
