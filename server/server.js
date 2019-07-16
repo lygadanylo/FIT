@@ -18,10 +18,6 @@ app.get("/", (req, res) => {
   res.send("Home page");
 });
 
-app.get("/profile", (req, res) => {
-  res.send();
-});
-
 app.listen(PORT, (error)=>{
   if(error){
   return console.log("something bad happened", error);
