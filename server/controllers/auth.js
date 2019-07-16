@@ -26,7 +26,7 @@ export const login = (req, res, next) => {
       if (userPassword !== params[0]) {
         return res
           .status(HttpStatus.BAD_REQUEST)
-          .json({ type: false, message: "password or email is not valid" });
+          .json({ type: false, message: "password or email invalid" });
       }
       const { email, name, lastName } = existingUser;
       return res.status(HttpStatus.OK).json({
