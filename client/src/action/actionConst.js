@@ -1,5 +1,5 @@
-export const createStatus = message => ({
-  type: "CREATE_STATUS",
+export const Notifications = message => ({
+  type: "NOTIFICATIONS",
   payload: message
 });
 
@@ -8,8 +8,8 @@ export const loginUser = value => ({
   payload: value
 });
 
-export const createUser = value => ({
-  type: "CREATE_USER",
+export const registerUser = value => ({
+  type: "REGISTER_USER",
   payload: value
 });
 

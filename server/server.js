@@ -1,90 +1,41 @@
-const User = require("./models/user"),
-  passport = require("passport");
-var HttpStatus = require("http-status-codes");
+import apiRouts from "./routs/api";
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import passport from "./config/passport";
+import session from "express-session";
 
-const express = require("express"),
-  bodyParser = require("body-parser"),
-  cors = require("cors"),
-  CryptoJS = require("crypto-js");
-
+const FileStore = require("session-file-store")(session);
 const app = express();
 const PORT = 3001;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(session({
+  secret: "SECRET",
+  store: new FileStore(),
+  cookie:{
+    path:"/",
+    httpOnly: true,
+    maxAge: 60*60*1000
+  },
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use("/api", apiRouts);
 
 app.get("/", (req, res) => {
   res.send("Home page");
 });
 
-app.post("/create", (req, res) => {
-  const { email, name, last_name, password } = req.body;
-  if (email == "" || name == "" || last_name == "" || password == "") {
-    return res.status(400).json({ success: false, message: false });
+app.listen(PORT, (error)=>{
+  if(error){
+  return console.log("something bad happened", error);
   }
-  User.findOne(
-    {
-      email: email
-    },
-    (error, user) => {
-      console.log(email);
-      if (error) {
-        return res.status(400).json({ success: false, message: false });
-      }
-      console.log(user);
-      if (email === user.email) {
-        return res.status(400).json({ success: false, message: false });
-      }
-      const token = CryptoJS.enc.Utf8.parse(`${password} ${email}`);
-      const passwordHash = CryptoJS.enc.Base64.stringify(token);
-      const Users = new User({
-        email,
-        name,
-        lastName: last_name,
-        password: passwordHash
-      }).save();
-      return res
-        .status(200)
-        .json({ success: true, user: Users, message: true });
-    }
-  );
+  console.log(`Server is listening on ${PORT}`);
 });
-
-app.post("/login", (req, res, next) => {
-  const { email, password } = req.body;
-  User.findOne(
-    {
-      email: email
-    },
-    (error, user) => {
-      if (error) {
-        return res.status(400).json({ success: false, message: false });
-      }
-      if (!user) {
-        return res
-          .status(400)
-          .json({ success: false, message: "user not found" });
-      }
-      const decryptedToken = CryptoJS.enc.Base64.parse(user.password);
-      const result = decryptedToken.toString(CryptoJS.enc.Utf8);
-      const params = result.split(" ");
-      if (password === params[0]) {
-        const { email, name, lastName, password } = user;
-        return res
-          .status(HttpStatus.OK)
-          .json({ success: false, user: { email, name, lastName, password } });
-      }
-      return res
-        .status(HttpStatus.BAD_REQUEST)
-        .json({ message: "password or email is not valid" });
-    }
-  ).lean();
-});
-
-app.get("/profile", (req, res) => {
-  res.send(user);
-});
-
-console.log("Start on PORT: ", PORT);
-app.listen(PORT);

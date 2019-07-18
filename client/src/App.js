@@ -3,7 +3,9 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Profile from "./components/profile/profile";
 import Navigation from "./components/landing page/Navigation";
+import Footer from "./components/landing page/footer";
 import Home from "./components/home";
+import Notifications from "./components/Notification";
 import { connect } from "react-redux";
 import "./style/app.scss";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -20,12 +22,14 @@ class App extends Component {
       <Router basename="/">
         <div className="App">
           <Navigation />
+          <Notifications />
           <Switch>
             <Route exact path={HOME_ROUTER} component={Home} />
             <Route exact path={REGISTER_PAGE} component={Register} />
             <Route exact path={LOGIN_PAGE} component={Login} />
             <Route exact path={USER_PROFILE} component={Profile} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );

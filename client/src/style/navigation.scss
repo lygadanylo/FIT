@@ -37,6 +37,7 @@
       h1 {
         margin: 0;
         a {
+          font-family: 'Rubik Mono One', sans-serif;
           margin: 0;
           padding: 0;
           color: #fff;
@@ -51,8 +52,9 @@
         flex-wrap: wrap;
         color: #fff;
         li {
+          font-family: 'Rubik Mono One', sans-serif;
           text-transform: uppercase;
-          padding-right: 20px;
+          padding-right: 18px;
           list-style-type: none;
           &:hover {
             text-decoration: underline;
@@ -75,8 +77,9 @@
           flex-wrap: wrap;
           color: #fff;
           li {
+            font-family: 'Rubik Mono One', sans-serif;
             text-transform: uppercase;
-            padding-right: 20px;
+            padding-right: 18px;
             list-style-type: none;
             &:hover {
               text-decoration: underline;

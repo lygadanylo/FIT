@@ -11,7 +11,6 @@ class Profile extends Component {
   componentDidMount() {
     const { user } = this.props;
     const profile = localStorage.getItem("user");
-    console.log(profile);
     if (!user && profile) {
       const { getUser } = this.props;
       getUser();
@@ -21,15 +20,17 @@ class Profile extends Component {
   render() {
     const { user } = this.props;
     return (
-      <div className="profile-wrapper">
-        {user ? (
-          <div className="user-info">
-            <h1>Name: {user.name}</h1>
-            <h1>Last Name: {user.lastName}</h1>
-            <h1>Email: {user.email}</h1>
-          </div>
-        ) : null}
-      </div>
+      <section id="profile">
+        <div className="profile-wrapper">
+          {user ? (
+            <div className="user-info">
+              <h1>Name: {user.name}</h1>
+              <h1>Last Name: {user.lastName}</h1>
+              <h1>Email: {user.email}</h1>
+            </div>
+          ) : null}
+        </div>
+      </section>
     );
   }
 }
