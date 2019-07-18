@@ -4,38 +4,6 @@ import HttpStatus from "http-status-codes";
 import passport from "passport";
 
 export const login = (req, res, next) => {
-  // const { email } = req.body;
-  // User.findOne(
-  //   {
-  //     email: email
-  //   },
-  //   (error, existingUser) => {
-  //     if (error) {
-  //       return res
-  //         .status(HttpStatus.BAD_REQUEST)
-  //         .json({ success: false, message: false });
-  //     }
-  //     if (!existingUser) {
-  //       return res
-  //         .status(HttpStatus.BAD_REQUEST)
-  //         .json({ type: false, message: "user not found" });
-  //     }
-  //     const decryptedToken = CryptoJS.enc.Base64.parse(existingUser.password);
-  //     const result = decryptedToken.toString(CryptoJS.enc.Utf8);
-  //     const params = result.split(" ");
-  //     const { password: userPassword } = req.body;
-  //     if (userPassword !== params[0]) {
-  //       return res
-  //         .status(HttpStatus.BAD_REQUEST)
-  //         .json({ type: false, message: "password or email invalid" });
-  //     }
-  //     const { email, name, lastName } = existingUser;
-  //     return res.status(HttpStatus.OK).json({
-  //       user: { email, name, lastName },
-  //       message: "Welcome"
-  //     });
-  //   }
-  // ).lean();
   passport.authenticate("local", { session: false }, (err, user, info) => {
     if (err) {
       return next(err);
@@ -84,7 +52,5 @@ export const onAuth = (req, res) => {
       .json({ msg: "User Not Authenticated" });
   }
   const user = req.user;
-  // const userAccount = Object.assign({}, user._doc, { profile: userProfile });
-
   return res.status(HttpStatus.OK).json({ msg: "Success", user: user });
 };

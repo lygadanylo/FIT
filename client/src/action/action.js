@@ -26,7 +26,7 @@ export const login = value => dispatch => {
     .then(response => {
       dispatch(loginUser(value));
       dispatch(User(response.data.user));
-      // dispatch(Notifications(response.data));
+      dispatch(Notifications(response.data));
     })
     .catch(error => {
       console.log(error);
@@ -37,7 +37,7 @@ export const login = value => dispatch => {
 export const getUser = () => dispatch => {
   axios({
     method: "GET",
-    url: "http://localhost:3001/profile"
+    url: "http://localhost:3001/api/account/profile"
   })
     .then(response => {
       dispatch(User(response.data.user));
