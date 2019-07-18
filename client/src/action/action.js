@@ -26,7 +26,7 @@ export const login = value => dispatch => {
     .then(response => {
       dispatch(loginUser(value));
       dispatch(User(response.data.user));
-      dispatch(Notifications(response.data));
+      // dispatch(Notifications(response.data));
     })
     .catch(error => {
       console.log(error);
