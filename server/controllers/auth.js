@@ -76,3 +76,15 @@ export const register = (req,res) => {
     .json({ type: true, user: Users, message: "Created" });
   })
 }
+
+export const onAuth = (req, res) => {
+  if (!req.user) {
+    return res
+      .status(HttpStatus.UNAUTHORIZED)
+      .json({ msg: "User Not Authenticated" });
+  }
+  const user = req.user;
+  // const userAccount = Object.assign({}, user._doc, { profile: userProfile });
+
+  return res.status(HttpStatus.OK).json({ msg: "Success", user: user });
+};
