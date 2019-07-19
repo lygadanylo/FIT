@@ -1,23 +1,8 @@
 import User from "../models/user";
 import CryptoJS from "crypto-js";
 import HttpStatus from "http-status-codes";
-import passport from "passport";
 
 export const login = (req, res, next) => {
-  passport.authenticate("local", { session: false }, (err, user, info) => {
-    if (err) {
-      return next(err);
-    }
-    if (!user) {
-      return res.status(HttpStatus.BAD_REQUEST).json(info);
-    }
-    req.logIn(user, err => {
-      if (err) {
-        return next(err);
-      }
-      return next();
-    });
-  })(req, res, next);
 };
 
 export const register = (req,res) => {
@@ -44,13 +29,3 @@ export const register = (req,res) => {
     .json({ type: true, user: Users, message: "Created" });
   })
 }
-
-export const onAuth = (req, res) => {
-  if (!req.user) {
-    return res
-      .status(HttpStatus.UNAUTHORIZED)
-      .json({ msg: "User Not Authenticated" });
-  }
-  const user = req.user;
-  return res.status(HttpStatus.OK).json({ msg: "Success", user: user });
-};
