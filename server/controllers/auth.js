@@ -20,13 +20,15 @@ export const login = (req, res, next) => {
   })(req, res, next);
 };
 
-export const register = (req,res) => {
+export const register = (req, res) => {
   const { email, name, last_name, password } = req.body;
-  User.findOne({email: email}, (error, existingUser) => {
-    if(error){
-      return res.status(HttpStatus.BAD_REQUEST).json({type:false, message: "Bad request"});
+  User.findOne({ email: email }, (error, existingUser) => {
+    if (error) {
+      return res
+        .status(HttpStatus.BAD_REQUEST)
+        .json({ type: false, message: "Bad request" });
     }
-    if(existingUser) {
+    if (existingUser) {
       return res.status(HttpStatus.BAD_REQUEST).json({
         message: "Account with that email address already exists."
       });
@@ -34,16 +36,16 @@ export const register = (req,res) => {
     const token = CryptoJS.enc.Utf8.parse(`${password} ${email}`);
     const passwordHash = CryptoJS.enc.Base64.stringify(token);
     const Users = new User({
-    email,
-    name,
-    lastName: last_name,
-    password: passwordHash
+      email,
+      name,
+      lastName: last_name,
+      password: passwordHash
     }).save();
     return res
-    .status(200)
-    .json({ type: true, user: Users, message: "Created" });
-  })
-}
+      .status(200)
+      .json({ type: true, user: Users, message: "Created" });
+  });
+};
 
 export const onAuth = (req, res) => {
   if (!req.user) {
@@ -52,5 +54,5 @@ export const onAuth = (req, res) => {
       .json({ msg: "User Not Authenticated" });
   }
   const user = req.user;
-  return res.status(HttpStatus.OK).json({ msg: "Success", user: user });
+  return res.status(HttpStatus.OK).json({ msg: "Success", user });
 };
