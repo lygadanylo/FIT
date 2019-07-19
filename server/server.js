@@ -15,9 +15,9 @@ app.get("/", (req, res) => {
   res.send("Home page");
 });
 
-app.listen(PORT, (error)=>{
-  if(error){
-  return console.log("something bad happened", error);
+app.listen(PORT, error => {
+  if (error) {
+    return console.log("something bad happened", error);
   }
   console.log(`Server is listening on ${PORT}`);
 });
